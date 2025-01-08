@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Hotel Management</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex justify-center items-center min-h-screen">
+    <div class="w-full max-w-md bg-white shadow-md rounded px-8 py-6">
+        <h2 class="text-2xl font-bold text-center mb-6">Login</h2>
+        <form id="loginForm" method="POST">
+            <div class="mb-4">
+                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                <input 
+                    type="email" 
+                    id="email" 
+                    name="email" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                    placeholder="Masukkan email" 
+                    required
+                >
+            </div>
+            <div class="mb-6">
+                <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>
+                <input 
+                    type="password" 
+                    id="password" 
+                    name="password" 
+                    class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent" 
+                    placeholder="Masukkan password" 
+                    required
+                >
+            </div>
+            <button 
+                type="submit" 
+                class="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-offset-2">
+                Login
+            </button>
+        </form>
+        <p class="text-center text-gray-600 text-sm mt-4">
+            Belum punya akun? <a href="#" class="text-blue-500 hover:underline">Daftar di sini</a>
+        </p>
+    </div>
+
+    <script>
+        // Logika untuk membedakan admin dan konsumen
+        document.getElementById("loginForm").addEventListener("submit", function (e) {
+            e.preventDefault(); // Mencegah refresh halaman
+            
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value.trim();
+
+            // Admin credentials (email dan password harus sesuai)
+            const adminEmail = "admin@hotel.com";
+            const adminPassword = "admin123";
+
+            if (email === adminEmail && password === adminPassword) {
+                window.location.href = "admin.html";
+            } else {
+                // Jika bukan admin, anggap sebagai konsumen
+                // Konsumen tidak membutuhkan validasi khusus
+                window.location.href = "konsumen.html";
+            }
+        });
+    </script>
+</body>
+</html>
